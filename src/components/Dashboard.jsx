@@ -21,6 +21,10 @@ const Dashboard = () => {
    */
   useEffect(() => {
     dispatch(getAllMachines())
+
+    return () => {
+      client.close()
+  }
   }, [])
 
   /**
@@ -61,6 +65,7 @@ const Dashboard = () => {
       dispatch(getRealTimeEvents(JSON.parse(message.data)))
   };
 
+
   return (
     <>
       <div>
@@ -79,7 +84,7 @@ const Dashboard = () => {
                 Running : {machines.filter(machine => machine.status == RUNNING).length}
                 <br />
                 Repaired/Errored : {machines.filter(machine => machine.status == REPAIRED ||
-                  machine.machine_type == ERRORED).length}
+                  machine.status == ERRORED).length}
                 <br />
                 Finished : {machines.filter(machine => machine.status == FINISHED).length}
               </div>

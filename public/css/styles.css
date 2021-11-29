@@ -1,5 +1,5 @@
 .App-header {
-  background-color: #ECE7D9;
+  background-color: #ece7d9;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -13,90 +13,111 @@
   text-align: center;
 }
 
-.tool-bar{
+.tool-bar {
   background-color: #135060;
 }
 
-.card{
-  background-color:#5491A1 ;
-  border-radius : 5px;
+.card {
+  background-color: #5491a1;
+  border-radius: 5px;
   width: 13em;
   margin-bottom: 1em;
-} 
-
-.card-content{
-  display: flex;
-  justify-content: space-around 
 }
-.card-md{
+
+.card-content {
+  display: flex;
+  justify-content: space-around;
+}
+.card-md {
   height: 90px;
   width: 90px;
 }
-.card-desc{
+.card-desc {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.status{
+.status {
   font-size: medium;
   padding: 22px;
   text-transform: capitalize;
 }
 
-.card-footer{
+.card-footer {
   display: flex;
   justify-content: center;
 }
-.status-icon{
+.status-icon {
   width: 35px !important;
   height: 35px !important;
 }
 
-.dashboard-container{
+.dashboard-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
+.dashboard-desc {
+  color: #696868;
+  font-size: medium;
+  font-family: sans-serif;
+  margin: 2em;
+}
 .css-o69gx8-MuiCardMedia-root {
   width: 90px !important;
 }
 .css-1qvr50w-MuiTypography-root {
-  text-transform: capitalize  !important;
+  text-transform: capitalize !important;
 }
-.css-konndc-MuiListItemText-root{
+.css-konndc-MuiListItemText-root {
   max-width: 15em !important;
 }
 
-.details-container{
- color: #22444D;
+.details-container {
+  color: #22444d;
 }
-.log-title{
+.log-title {
   display: flex;
   font-family: -webkit-pictograph;
 }
 
-.capitalize{
+.capitalize {
   text-transform: capitalize;
 }
-.running{
- background-color: #F28E36;
+.running {
+  background-color: #f28e36;
 }
-.repaired{
+.repaired,
+.errored {
   background-color: #952408;
 }
-.finished{
-  background-color: #0C890F;
+.finished {
+  background-color: #0c890f;
 }
-.event-list{
-  color: #E3D8CD;
+.event-list {
+  color: #e3d8cd;
   padding: 0 5em 0 1em !important;
 }
 
-.event-item{
+.event-item {
   display: flex !important;
   justify-content: space-between !important;
- margin-bottom: 9px;
-
+  margin-bottom: 9px;
+}
+.desc-card {
+  display: flex;
+  justify-content: space-around;
+}
+.card-overview {
+  font-size: large;
+  font-family: revert;
+  margin: 1em 9em 0 9em;
+}
+.title {
+  display: flex;
+  color: #4b4a4a;
+  font-size: 23px;
+  font-weight: 600;
 }

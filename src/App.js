@@ -1,6 +1,7 @@
 
 import { AppBar, Toolbar } from '@mui/material';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import Dashboard from './components/Dashboard';
 import EquipmentDetails from './components/EquipmentDetails';
@@ -17,31 +18,17 @@ function App() {
             >
               Machine Stream
             </span>
-
-
           </Toolbar>
-
         </AppBar>
-        {/* 
-      <Router>
-        <Switch>
-          <Route path="/">
-            <Dashboard />
-          </Route>
-          <Route path="/machine/details">
-            <EquipmentDetails />
-          </Route>
-        </Switch>
-      </Router>  */}
+
         <Router>
           <Switch>
-            {/* <Route path="/" element={<Dashboard />} / */}
             <Route exact path="/">
               <Dashboard />
             </Route>
             <Route exact path="/machine/details" >
-            <EquipmentDetails />
-              </Route>
+              <EquipmentDetails />
+            </Route>
           </Switch>
         </Router>
 

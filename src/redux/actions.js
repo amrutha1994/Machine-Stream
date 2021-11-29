@@ -1,19 +1,16 @@
 import axios from "axios";
 
-export const SCORE_CARD = "SCORE_CARD";
-export const PENALTY = "PENALTY";
-export const _URL_SKY = "http://85.214.74.245:9111/hblclock";
-export const SEND_SCORE_BOARD = "SEND_SCORE_BOARD";
-export const TOGGLE_STATE = "TOGGLE_STATE"
 export const URL_ZEISS = "http://codingcase.zeiss.services"
-
+export const URL_MACHINES = "/api/v1/machines"
 export const GET_MACHINE_STATUS = "GET_MACHINE_STATUS"
 export const GET_ALL_MACHINES = "GET_ALL_MACHINES"
+export const GET_MACHINE_DETAIL = "GET_MACHINE_DETAIL"
 
 export const axiosInstance = axios.create();
 
 /**
  * Action to store the real time events from websocket feed
+ * @param {*} payload 
  * 
  */
 export const getRealTimeEvents = (payload) => {
@@ -26,20 +23,18 @@ export const getRealTimeEvents = (payload) => {
 }
 
 /**
- * Action to send the score card to the backend
+ * Action to get the list of all machine
  * 
  */
 export const getAllMachines = () => {
   return async (dispatch) => {
-    await axiosInstance.get(URL_ZEISS+"/api/v1/machines").then(function (response) {
-      console.log('Authenticated');
+    await axiosInstance.get(URL_ZEISS + URL_MACHINES).then(function (response) {
       dispatch({
         type: GET_ALL_MACHINES,
         payload: response,
       });
 
     }).catch(function (error) {
-      console.log('Error on Authentication');
       dispatch({
         type: GET_ALL_MACHINES,
         payload: error,
@@ -48,3 +43,25 @@ export const getAllMachines = () => {
   }
 }
 
+/**
+ * Action to get details of a particular machine
+ * @param {*} machineId 
+ *
+ */
+export const getMachineDetails = (machineId) => {
+  return async (dispatch) => {
+    await axiosInstance.get(URL_ZEISS + URL_MACHINES + "/" + machineId)
+      .then(function (response) {
+        dispatch({
+          type: GET_MACHINE_DETAIL,
+          payload: response,
+        });
+
+      }).catch(function (error) {
+        dispatch({
+          type: GET_MACHINE_DETAIL,
+          payload: error,
+        });
+      });
+  }
+}

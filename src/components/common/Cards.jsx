@@ -1,29 +1,29 @@
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ErrorIcon from '@mui/icons-material/Error';
 import TimerIcon from '@mui/icons-material/Timer';
-import { Button, Card, CardActions, CardContent, CardHeader, CardMedia, CircularProgress, Typography } from "@mui/material";
+import {
+  Button, Card,
+  CardActions, CardContent,
+  CardHeader, CardMedia,
+  CircularProgress, Typography
+} from "@mui/material";
 import React from "react";
 import { useHistory, withRouter } from 'react-router';
-import { FINISHED, IDLE, MEASUREMENT, MICROSCOPE, REPAIRED, RUNNING } from "../Constants";
-import RotateRightIcon from '@mui/icons-material/RotateRight';
+import {
+  ERRORED,
+  FINISHED, IDLE,
+  MEASUREMENT, MICROSCOPE,
+  REPAIRED, RUNNING
+} from "../Constants";
 
-const getStatusIcon = (status) => {
-  switch (status) {
-    case RUNNING: return <RotateRightIcon className="status-icon" sx={{ color: "#367DE1" }}/>
-    case FINISHED: return <CheckCircleIcon className="status-icon" color="success" />
-    case REPAIRED: return <ErrorIcon className="status-icon" sx={{ color: "red" }} />
-    case IDLE: return <TimerIcon className="status-icon" sx={{ color: "yellow" }} />
-  }
-}
+/**
+ * Functional component to display the card which 
+ * consist of the machine details
+ * @param {*} props 
+ * @returns 
+ */
 
-const getImage = (type) => {
-  switch (type) {
-    case MEASUREMENT: return "../../images/measurement.png"
-    case MICROSCOPE: return "../../images/microscope.png"
-  }
-}
 const Cards = (props) => {
-  
   const history = useHistory();
   return (
     <Card className="card">
@@ -59,6 +59,34 @@ const Cards = (props) => {
 
     </Card>
   );
+}
+
+/**
+ * Method to get the icon based on the status
+ * @param {String} status 
+ * 
+ */
+const getStatusIcon = (status) => {
+  switch (status) {
+    case RUNNING: return <CircularProgress className="status-icon" sx={{ color: "#367DE1" }} />
+    case FINISHED: return <CheckCircleIcon className="status-icon" color="success" />
+    case REPAIRED:
+    case ERRORED:
+      return <ErrorIcon className="status-icon" sx={{ color: "red" }} />
+    case IDLE: return <TimerIcon className="status-icon" sx={{ color: "yellow" }} />
+  }
+}
+
+/**
+ * Method to get the image based on the machine type
+ * @param {String} type 
+ * @returns 
+ */
+const getImage = (type) => {
+  switch (type) {
+    case MEASUREMENT: return "../../images/measurement.png"
+    case MICROSCOPE: return "../../images/microscope.png"
+  }
 }
 
 export default withRouter(Cards);

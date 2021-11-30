@@ -1,70 +1,77 @@
-# Getting Started with Machine Stream
+# Machine Stream
+
+Machine Stream is a React Web application for monitoring the current health and activity of the installed machines. Machines in this application are of two categores,
+1. Microscopes
+2. Measuring devices
+
+With this application one can monitor these assets remotely in near real-time.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Getting Started
 
-In the project directory, you can run:
+### Requirements
+- Node 14+
+- NPM 5+ 
 
-### `npm start`
+### Installation
+- Git clone repository
+- From the project directory, install the required dependencies using,
 
-Runs the app in the development mode.\
+   `npm install`
+- To run the project,
+
+    `npm start`
+
+Now the app starts running in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
+- To Build the app for production use,
+   
+   `npm run build`
+ This will build the app inside the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Key features
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+ #### Dashboard
+  - Displays an overall summary of all machines that are running
+  - Display the list of all machines in near real time
+ 
+  #### Equipment Details
+   - Details page to list the details of a particular machine
+   - Event log to show the list of events of that machine
+  
+## Tech stack
 
-### `npm run eject`
+1. React V17+ and mostly used functional components
+2. Redux and Hooks to manage states
+4. WebSockets to fetch real time data
+5. Continous integration (GIT)
+6. Good level of modularity
+7. Deployed and tested in Docker
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+  
+## Future Enhancements
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+These are some of the possible enhancement that can be done in the future,
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+ 1. Implement filtering in dashboard to filter machines bases on type, status or any other 
+ 3. Create responsive screens for mobile
+ 4. Improve CSS styling
+ 5. Add unit test and test coverage
+ 6. Continous Deployment
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Tools used
 
-## Learn More
+1. Visual Studio Code
+2. Docker
+3. Postman
+4. Miro Board
+5. Material UI App
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Demo
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This application has been deployed in the AWS S3 storage. To access the application, click here
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Screenshot

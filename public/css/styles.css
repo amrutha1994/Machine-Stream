@@ -41,7 +41,7 @@
 .status {
   font-size: medium;
   padding: 22px;
-  text-transform: capitalize;
+  text-transform: capitalize !important;
 }
 
 .card-footer {
@@ -84,7 +84,7 @@
 }
 
 .capitalize {
-  text-transform: capitalize;
+  text-transform: capitalize !important;
 }
 .running {
   background-color: #2661CA;
@@ -125,4 +125,7 @@
   color: #4b4a4a;
   font-size: 23px;
   font-weight: 600;
+}
+.css-1g3izzu{
+  text-transform: capitalize !important;
 }

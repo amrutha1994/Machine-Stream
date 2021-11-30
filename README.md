@@ -49,7 +49,8 @@ It correctly bundles React in production mode and optimizes the build for the be
 4. WebSockets to fetch real time data
 5. Continous integration (GIT)
 6. Good level of modularity
-7. Deployed and tested in Docker
+7. Tested in chrome browser
+8. Deployed and tested in Docker
 
   
 ## Future Enhancements
@@ -62,6 +63,7 @@ These are some of the possible enhancement that can be done in the future,
  5. Add unit test and test coverage
  6. Continous Deployment
  7. Improve optimization techniques
+ 8. Browser compatibility improvements
 
 ## Tools used
 

@@ -5,10 +5,11 @@ import NumbersIcon from '@mui/icons-material/Numbers';
 import RunningWithErrorsIcon from '@mui/icons-material/RunningWithErrors';
 import StairsIcon from '@mui/icons-material/Stairs';
 import { Avatar, List, ListItem, ListItemAvatar, ListItemText, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { withRouter } from "react-router";
-import { getMachineDetails } from "../redux/actions";
+import { w3cwebsocket } from 'websocket';
+import { getMachineDetails, getRealTimeEvents } from "../redux/actions";
 
 /**
  * Method to show the details of a particular machine
@@ -23,7 +24,9 @@ const EquipmentDetails = (props) => {
 
     const [machineDetail, setMachineDetail] = useState()
     const [status, setStatus] = useState()
-    const [events, setEvents] = useState()
+    const [events, setEvents] = useState([])
+    const client = useRef(null);
+
 
     /**
      * Get meachine details on component load
@@ -34,6 +37,13 @@ const EquipmentDetails = (props) => {
             props.location.state.item.id
         ) {
             dispatch(getMachineDetails(props.location.state.item.id))
+        }
+        client.current = new w3cwebsocket('ws://codingcase.zeiss.services/ws');
+        client.current.onopen = () => {
+            console.log('WebSocket Client Connected');
+        };
+        return () => {
+            client.current.close()
         }
     }, [])
 
@@ -50,7 +60,11 @@ const EquipmentDetails = (props) => {
                 setStatus(machineDetailInStore.data.data.status)
             }
             if (machineDetailInStore.data.data.events) {
-                setEvents(machineDetailInStore.data.data.events)
+                let totalEvents = machineDetailInStore.data.data.events
+                if (totalEvents.length >= 10) {
+                    totalEvents.splice(10, totalEvents.length)
+                }
+                setEvents(totalEvents)
             }
         }
     }, [machineDetailInStore])
@@ -76,6 +90,16 @@ const EquipmentDetails = (props) => {
     }, [machineStatusInStore])
 
 
+    // ************** Web socket connection ********************
+
+    if (client && client.current) {
+        client.current.onmessage = (message) => {
+            if (message.data && message.data.payload && message.data.payload.machine_id == props.location.state.item.id) {
+                dispatch(getRealTimeEvents(JSON.parse(message.data)))
+
+            }
+        };
+    }
     return (
         machineDetail ?
             (

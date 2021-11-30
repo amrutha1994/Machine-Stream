@@ -87,9 +87,11 @@
   text-transform: capitalize;
 }
 .running {
-  background-color: #f28e36;
+  background-color: #2661CA;
 }
-.repaired,
+.repaired{
+  background-color:  #EB8921
+}
 .errored {
   background-color: #952408;
 }
@@ -99,6 +101,9 @@
 .event-list {
   color: #e3d8cd;
   padding: 0 5em 0 1em !important;
+}
+.linear-load{
+  height: 8px !important;
 }
 
 .event-item {

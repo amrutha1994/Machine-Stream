@@ -1,11 +1,11 @@
+import BuildIcon from '@mui/icons-material/Build';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ErrorIcon from '@mui/icons-material/Error';
 import TimerIcon from '@mui/icons-material/Timer';
 import {
   Button, Card,
   CardActions, CardContent,
-  CardHeader, CardMedia,
-  CircularProgress, Typography
+  CardHeader, CardMedia, LinearProgress, Typography
 } from "@mui/material";
 import React from "react";
 import { useHistory, withRouter } from 'react-router';
@@ -68,11 +68,10 @@ const Cards = (props) => {
  */
 const getStatusIcon = (status) => {
   switch (status) {
-    case RUNNING: return <CircularProgress className="status-icon" sx={{ color: "#367DE1" }} />
+    case RUNNING: return <LinearProgress disableShrink  className="status-icon linear-load" sx={{ color: "#367DE1" }} />
     case FINISHED: return <CheckCircleIcon className="status-icon" color="success" />
-    case REPAIRED:
-    case ERRORED:
-      return <ErrorIcon className="status-icon" sx={{ color: "red" }} />
+    case REPAIRED: return <BuildIcon className="status-icon" sx={{ color:"#EB8921"}}  />
+    case ERRORED: return <ErrorIcon className="status-icon" sx={{ color: "red" }} />
     case IDLE: return <TimerIcon className="status-icon" sx={{ color: "yellow" }} />
   }
 }

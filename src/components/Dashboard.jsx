@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Cards from "./common/Cards";
 import { w3cwebsocket as W3CWebSocket } from "websocket";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,16 +15,20 @@ const Dashboard = () => {
   const machineStatusInStore = useSelector(state => state.machineStatusReducer.machineStatus)
   const allMachinesInStore = useSelector(state => state.machinesReducer.machines)
   const [machines, setMachines] = useState()
+  const client = useRef(null);
 
   /**
    * Get all machines on component load
    */
   useEffect(() => {
     dispatch(getAllMachines())
-
+    client.current = new W3CWebSocket('ws://codingcase.zeiss.services/ws');
+    client.current.onopen = () => {
+      console.log('WebSocket Client Connected');
+    };
     return () => {
-      client.close()
-  }
+      client.current.close()
+    }
   }, [])
 
   /**
@@ -56,15 +60,13 @@ const Dashboard = () => {
     }
   }, [machineStatusInStore])
 
-  // ************** creating Web socket connection ********************
-  const client = new W3CWebSocket('ws://codingcase.zeiss.services/ws');
-  client.onopen = () => {
-      console.log('WebSocket Client Connected');
-  };
-  client.onmessage = (message) => {
-      dispatch(getRealTimeEvents(JSON.parse(message.data)))
-  };
+  // **************  Web socket connection ********************
 
+  if(client && client.current) {
+    client.current.onmessage = (message) => {
+    dispatch(getRealTimeEvents(JSON.parse(message.data)))
+  };
+}
 
   return (
     <>

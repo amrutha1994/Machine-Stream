@@ -61,6 +61,7 @@ These are some of the possible enhancement that can be done in the future,
  4. Improve CSS styling
  5. Add unit test and test coverage
  6. Continous Deployment
+ 7. Improve optimization techniques
 
 ## Tools used
 
@@ -72,6 +73,12 @@ These are some of the possible enhancement that can be done in the future,
 
 ## Demo
 
-This application has been deployed in the AWS S3 storage. To access the application, click here
+This application has been deployed in the AWS S3 storage. 
+
+To access the application, click here http://machinestream.s3-website.ap-south-1.amazonaws.com/
 
 ## Screenshot
+<img style="-webkit-user-select: none;margin: auto;cursor: zoom-in;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" src="https://user-images.githubusercontent.com/30403669/143992386-027a5c60-c772-48b1-804f-1979c5cdeddd.png" width="600" height="300">
+
+<img style="-webkit-user-select: none;margin: auto;cursor: zoom-in;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" src="https://user-images.githubusercontent.com/30403669/143992445-b36e988e-0cfe-4fb2-a7b4-939b10f8b293.png" width="600" height="300">
+
